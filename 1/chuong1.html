@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chương 1 - Tuyệt vọng vì thất tình, tôi quyết định trở thành một Vtuber vang danh</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      background-color: #ffffff;
+      color: #333333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      text-align: left; /* Căn lề trái cho đoạn văn */
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .dark-mode {
+      background-color: #333333;
+      color: #ffffff;
+    }
+    .dark-mode a {
+      color: #55acee;
+    }
+    @media (min-width: 768px) {
+      body {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Chương 1 - Tuyệt vọng vì thất tình, tôi quyết định trở thành một Vtuber vang danh</h1>
+
+  <p>Nội dung chương 1 sẽ được thay đổi và chỉnh sửa ở đây.</p>
+
+  <!-- Đường dẫn đến chương tiếp theo -->
+  <footer style="margin-top: 20px;">
+    <p><a href="chuong2.html">Đọc tiếp: Chương 2</a></p>
+  </footer>
+
+  <!-- Liên kết đến nhóm Discord -->
+  <footer style="margin-top: 20px;">
+    <p><a href="https://discord.gg/XVMy9RNq">Nhóm Discord</a></p>
+  </footer>
+
+  <!-- Nút chuyển đổi chế độ -->
+  <input type="checkbox" id="toggleTheme">
+  <label for="toggleTheme">Chế độ tối</label>
+  
+  <script>
+    const toggleTheme = document.getElementById('toggleTheme');
+    const body = document.body;
+
+    // Hàm lưu trạng thái chế độ tối vào cookie
+    function saveDarkModeToCookie() {
+      const darkModeEnabled = body.classList.contains('dark-mode');
+      document.cookie = `darkMode=${darkModeEnabled}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+    }
+
+    // Kiểm tra và áp dụng chế độ tối từ cookie khi tải lại trang
+    function applyDarkModeFromCookie() {
+      const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      if (cookieValue === "true") {
+        body.classList.add('dark-mode');
+        toggleTheme.checked = true;
+      }
+    }
+
+    // Thực thi hàm áp dụng chế độ tối từ cookie
+    applyDarkModeFromCookie();
+
+    // Xử lý sự kiện thay đổi chế độ tối
+    toggleTheme.addEventListener('change', function() {
+      body.classList.toggle('dark-mode');
+      saveDarkModeToCookie();
+    });
+  </script>
+</body>
+</html>
