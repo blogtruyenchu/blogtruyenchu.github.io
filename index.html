@@ -33,6 +33,9 @@
       background-color: #333333; /* Màu nền chế độ tối */
       color: #ffffff; /* Màu văn bản chế độ tối */
     }
+    .dark-mode a {
+      color: #55acee; /* Màu liên kết trong chế độ tối */
+    }
     @media (min-width: 768px) {
       body {
         max-width: 600px; /* Độ rộng tối đa của nội dung trên màn hình lớn */
@@ -47,16 +50,41 @@
   <p>Dưới đây là danh sách truyện:</p>
   <a href="/1">Tuyệt vọng vì thất tình, tôi quyết định trở thành một Vtuber vang danh</a>
 
+  <!-- Thông tin liên hệ -->
+  <footer style="margin-top: 20px;">
+    <p><a href="https://discord.gg/XVMy9RNq">nhóm discord</a></p>
+  </footer>
+
   <!-- Nút chuyển đổi chế độ -->
-  <label for="toggleTheme">Chế độ tối</label>
   <input type="checkbox" id="toggleTheme">
+  <label for="toggleTheme">Chế độ tối</label>
   
   <script>
     const toggleTheme = document.getElementById('toggleTheme');
     const body = document.body;
 
+    // Hàm lưu trạng thái chế độ tối vào cookie
+    function saveDarkModeToCookie() {
+      const darkModeEnabled = body.classList.contains('dark-mode');
+      document.cookie = `darkMode=${darkModeEnabled}; expires=Fri, 31 Dec 9999 23:59:59 GMT`; // Lưu cookie với thời hạn lâu dài
+    }
+
+    // Kiểm tra và áp dụng chế độ tối từ cookie khi tải lại trang
+    function applyDarkModeFromCookie() {
+      const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      if (cookieValue === "true") {
+        body.classList.add('dark-mode');
+        toggleTheme.checked = true;
+      }
+    }
+
+    // Thực thi hàm áp dụng chế độ tối từ cookie
+    applyDarkModeFromCookie();
+
+    // Xử lý sự kiện thay đổi chế độ tối
     toggleTheme.addEventListener('change', function() {
       body.classList.toggle('dark-mode');
+      saveDarkModeToCookie();
     });
   </script>
 </body>
