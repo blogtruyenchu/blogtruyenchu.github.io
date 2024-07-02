@@ -11,6 +11,9 @@
       margin: 0;
       padding: 20px;
       text-align: center; /* Căn giữa nội dung */
+      background-color: #ffffff; /* Màu nền mặc định */
+      color: #333333; /* Màu văn bản mặc định */
+      transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi màu */
     }
     h1 {
       font-size: 1.5rem; /* Độ lớn của tiêu đề */
@@ -26,6 +29,10 @@
     a:hover {
       text-decoration: underline; /* Gạch chân khi rê chuột */
     }
+    .dark-mode {
+      background-color: #333333; /* Màu nền chế độ tối */
+      color: #ffffff; /* Màu văn bản chế độ tối */
+    }
     @media (min-width: 768px) {
       body {
         max-width: 600px; /* Độ rộng tối đa của nội dung trên màn hình lớn */
@@ -39,5 +46,18 @@
   <h1>Kho truyện chữ tại GitHub Page</h1>
   <p>Dưới đây là danh sách truyện:</p>
   <a href="/1">Tuyệt vọng vì thất tình, tôi quyết định trở thành một Vtuber vang danh</a>
+
+  <!-- Nút chuyển đổi chế độ -->
+  <label for="toggleTheme">Chế độ tối</label>
+  <input type="checkbox" id="toggleTheme">
+  
+  <script>
+    const toggleTheme = document.getElementById('toggleTheme');
+    const body = document.body;
+
+    toggleTheme.addEventListener('change', function() {
+      body.classList.toggle('dark-mode');
+    });
+  </script>
 </body>
 </html>
